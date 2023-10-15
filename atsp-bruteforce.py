@@ -1,18 +1,21 @@
 from time import perf_counter
-import itertools
 import numpy as np
 
 
 def bruteforce(graph):
+    from itertools import permutations
     n = len(graph)
     min_dist = float('inf')
     tsp_path = None
 
-    for current_path in itertools.permutations(range(n)):
-        current_dist = __count_distance(current_path, graph)
+    bez_zer = range(1, np.array(graph).shape[0])
+
+    for current_path in permutations(bez_zer):
+        path = [0] + list(current_path)
+        current_dist = __count_distance(path, graph)
         if current_dist < min_dist:
             min_dist = current_dist
-            tsp_path = current_path
+            tsp_path = path
     return tsp_path, min_dist
 
 
@@ -68,12 +71,14 @@ def perform_bf_test_lib(file_name: str):
     print(f'nazwa pliku: {file_name}\npath: {path}\ndistance: {dist}\nczas:{diff}\n_______________________')
 
 if __name__ == '__main__':
-    perform_bf('dane/tsp_6_1.txt')
-    perform_bf_test_lib('dane/tsp_6_1.txt')
+    # perform_bf('dane/tsp_6_1.txt')
+    # perform_bf_test_lib('dane/tsp_6_1.txt')
+    #
+    # perform_bf('dane/tsp_6_2.txt')
+    # perform_bf_test_lib('dane/tsp_6_2.txt')
+    #
+    # perform_bf('dane/tsp_10.txt')
+    # perform_bf_test_lib('dane/tsp_10.txt')
 
-    perform_bf('dane/tsp_6_2.txt')
-    perform_bf_test_lib('dane/tsp_6_2.txt')
-
-    perform_bf('dane/tsp_10.txt')
-    perform_bf_test_lib('dane/tsp_10.txt')
-    # perform_bf_test_lib('dane/tsp_12.txt')
+    perform_bf('dane/tsp_12.txt')
+    perform_bf_test_lib('dane/tsp_12.txt')
