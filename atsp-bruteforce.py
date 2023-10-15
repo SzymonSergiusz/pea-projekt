@@ -36,27 +36,34 @@ def file_to_graph(file_name: str):
             data.append(list(map(int, line.strip().split())))
     return data
 
-def write_to_csv(file_name, ):
-    pass
+def write_to_csv(file_name, times):
+    import csv
+    is_header = False
     # TODO WYNIK TO NAZWA PLIKU, LICZBA POWTÓRZEŃ, WARTOŚĆ ŚCIEŻKI I ŚCIEŻKA A POTEM \N CZASY
-    # with open(file_name, 'w') as f:
+    with open('test_atsp_out.csv', 'a') as f:
+        writer = csv.writer(f)
+        for i in range(times):
+            path, dist, time = perform_bf(file_name)
+            if not is_header:
+                header = [file_name, times, dist, str(path).replace('(', '').replace(')', '')]
+                writer.writerow(header)
+                is_header = True
+            writer.writerow(f'({time:.20f})'.replace('.', ','))
+
 
 def perform_bf(file_name: str):
-    print('funkcja programu\n')
+    # print('funkcja programu\n')
     graph = file_to_graph(file_name)
 
     start = perf_counter()
     path, dist = bruteforce(graph)
-
-    #wszystko
-
-
     stop = perf_counter()
     diff = stop-start
-    print(f'nazwa pliku: {file_name}\npath: {path}\ndistance: {dist}\nczas:{diff}\n_______________________')
+    # print(f'nazwa pliku: {file_name}\npath: {path}\ndistance: {dist}\nczas:{diff}\n_______________________')
+    return path, dist, diff
 
 def perform_bf_test_lib(file_name: str):
-    print('funkcja testowa\n')
+    # print('funkcja testowa\n')
     from python_tsp.exact import brute_force
     graph = file_to_graph(file_name)
 
@@ -68,9 +75,35 @@ def perform_bf_test_lib(file_name: str):
 
     stop = perf_counter()
     diff = stop-start
-    print(f'nazwa pliku: {file_name}\npath: {path}\ndistance: {dist}\nczas:{diff}\n_______________________')
+    # print(f'nazwa pliku: {file_name}\npath: {path}\ndistance: {dist}\nczas:{diff}\n_______________________')
+    return path, dist, diff
+
+def test_perform_bf(file_name: str):
+    path, dist, diff = perform_bf(file_name)
+    correct_path, correct_dist, est_diff = perform_bf_test_lib(file_name)
+
+    assert path == correct_path
+    assert dist == correct_dist
+    print(f'head to head {file_name} time diff: program: {diff:.20f} | lib: {est_diff:.20f}')
+
+
 
 if __name__ == '__main__':
+    ITERATIONS = 1
+
+    # write_to_csv('dane/tsp_6_1.txt', ITERATIONS)
+    # write_to_csv('dane/tsp_6_2.txt', ITERATIONS)
+    # write_to_csv('dane/tsp_10.txt', ITERATIONS)
+    # write_to_csv('dane/tsp_12.txt', ITERATIONS)
+    # write_to_csv('dane/tsp_13.txt', ITERATIONS)
+    write_to_csv('dane/tsp_15.txt', ITERATIONS)
+    write_to_csv('dane/tsp_17.txt', ITERATIONS)
+    # test_perform_bf('dane/tsp_6_1.txt')
+    # test_perform_bf('dane/tsp_6_2.txt')
+    # test_perform_bf('dane/tsp_10.txt')
+    # test_perform_bf('dane/tsp_12.txt')
+
+
     # perform_bf('dane/tsp_6_1.txt')
     # perform_bf_test_lib('dane/tsp_6_1.txt')
     #
@@ -80,5 +113,5 @@ if __name__ == '__main__':
     # perform_bf('dane/tsp_10.txt')
     # perform_bf_test_lib('dane/tsp_10.txt')
 
-    perform_bf('dane/tsp_12.txt')
-    perform_bf_test_lib('dane/tsp_12.txt')
+    # perform_bf('dane/tsp_12.txt')
+    # perform_bf_test_lib('dane/tsp_12.txt')
