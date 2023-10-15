@@ -42,13 +42,15 @@ def write_to_csv(file_name, times):
     # TODO WYNIK TO NAZWA PLIKU, LICZBA POWTÓRZEŃ, WARTOŚĆ ŚCIEŻKI I ŚCIEŻKA A POTEM \N CZASY
     with open('test_atsp_out.csv', 'a') as f:
         writer = csv.writer(f)
+        time_row = []
         for i in range(times):
             path, dist, time = perform_bf(file_name)
             if not is_header:
                 header = [file_name, times, dist, str(path).replace('(', '').replace(')', '')]
                 writer.writerow(header)
                 is_header = True
-            writer.writerow(f'({time:.20f})'.replace('.', ','))
+            time_row.append(time)
+        writer.writerow(time_row)
 
 
 def perform_bf(file_name: str):
@@ -70,9 +72,6 @@ def perform_bf_test_lib(file_name: str):
     start = perf_counter()
     path, dist = brute_force.solve_tsp_brute_force(np.array(graph))
 
-    #wszystko
-
-
     stop = perf_counter()
     diff = stop-start
     # print(f'nazwa pliku: {file_name}\npath: {path}\ndistance: {dist}\nczas:{diff}\n_______________________')
@@ -91,27 +90,14 @@ def test_perform_bf(file_name: str):
 if __name__ == '__main__':
     ITERATIONS = 1
 
-    # write_to_csv('dane/tsp_6_1.txt', ITERATIONS)
+    write_to_csv('dane/tsp_6_1.txt', ITERATIONS)
     # write_to_csv('dane/tsp_6_2.txt', ITERATIONS)
     # write_to_csv('dane/tsp_10.txt', ITERATIONS)
     # write_to_csv('dane/tsp_12.txt', ITERATIONS)
     # write_to_csv('dane/tsp_13.txt', ITERATIONS)
-    write_to_csv('dane/tsp_15.txt', ITERATIONS)
-    write_to_csv('dane/tsp_17.txt', ITERATIONS)
+    # write_to_csv('dane/tsp_15.txt', ITERATIONS)
+    # write_to_csv('dane/tsp_17.txt', ITERATIONS)
     # test_perform_bf('dane/tsp_6_1.txt')
     # test_perform_bf('dane/tsp_6_2.txt')
     # test_perform_bf('dane/tsp_10.txt')
     # test_perform_bf('dane/tsp_12.txt')
-
-
-    # perform_bf('dane/tsp_6_1.txt')
-    # perform_bf_test_lib('dane/tsp_6_1.txt')
-    #
-    # perform_bf('dane/tsp_6_2.txt')
-    # perform_bf_test_lib('dane/tsp_6_2.txt')
-    #
-    # perform_bf('dane/tsp_10.txt')
-    # perform_bf_test_lib('dane/tsp_10.txt')
-
-    # perform_bf('dane/tsp_12.txt')
-    # perform_bf_test_lib('dane/tsp_12.txt')
