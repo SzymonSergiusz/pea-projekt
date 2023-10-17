@@ -41,17 +41,29 @@ def write_to_csv(file_name, times):
     is_header = False
     with open('test_atsp_out.csv', 'a') as f:
         writer = csv.writer(f)
-        time_row = []
         for i in range(times):
             path, dist, time = perform_bf(file_name)
             if not is_header:
                 header = [file_name, times, dist, str(path).replace('(', '').replace(')', '')]
                 writer.writerow(header)
                 is_header = True
-            time_row.append(time)
-        writer.writerow(time_row)
+            writer.writerow([time])
 
-
+def write_to_csv_from_config(file_name, iterations, expected_dist, expected_path, output_name):
+    import csv
+    is_header = False
+    with open(output_name, 'a') as f:
+        writer = csv.writer(f)
+        for i in range(iterations):
+            path, dist, time = perform_bf(file_name)
+            # test czy wygenerowane wyniki zgadzają się z oczekiwanymi wynikami z pliku .ini
+            assert path == expected_path
+            assert dist == expected_dist
+            if not is_header:
+                header = [file_name, iterations, expected_dist, expected_path]
+                writer.writerow(header)
+                is_header = True
+            writer.writerow([time])
 def perform_bf(file_name: str):
     graph = file_to_graph(file_name)
     start = perf_counter()
@@ -68,7 +80,7 @@ def perform_bf_test_lib(file_name: str):
     path, dist = brute_force.solve_tsp_brute_force(np.array(graph))
     stop = perf_counter()
     diff = stop - start
-    return path+[0], dist, diff
+    return path + [0], dist, diff
 
 
 def test_perform_bf(file_name: str):
@@ -76,13 +88,38 @@ def test_perform_bf(file_name: str):
     correct_path, correct_dist, est_diff = perform_bf_test_lib(file_name)
     assert path == correct_path
     assert dist == correct_dist
-    print(f'head to head {file_name} time diff: program: {diff:.20f} | lib: {est_diff:.20f}')
+    print(f'ścieżka: {path} koszt: {dist}\n{file_name} time diff: program: {diff:.20f} | lib: {est_diff:.20f}')
 
+
+def readConfigFile(ini: str):
+    lines = []
+    with open(ini, 'r') as f:
+        for line in f:
+            lines.append(line)
+    return lines
+
+
+def execute_from_ini(lines):
+    output_name = lines.pop()
+    for line in lines:
+        arr_as_str = line.strip().split(' ', maxsplit=3)
+        print(arr_as_str)
+        file_name, iterations, expected_dist, expected_path = arr_as_str
+        expected_path = [int(p) for p in expected_path.replace('[', '').replace(']', '').strip().split(',')]
+        write_to_csv_from_config(file_name, int(iterations), int(expected_dist), expected_path, output_name)
+
+    with open(output_name, 'a') as f:
+        f.write(output_name)
 
 if __name__ == '__main__':
-    ITERATIONS = 1
+    # wczytanie pliku .INI
+    lines = readConfigFile('test_atsp.ini')
+    execute_from_ini(lines)
 
+
+    # zakomentowany kod do testowania
     # WYGENEROWANIE WYNIKÓW
+    # ITERATIONS = 10
     # write_to_csv('dane/tsp_6_1.txt', ITERATIONS)
     # write_to_csv('dane/tsp_6_2.txt', ITERATIONS)
     # write_to_csv('dane/tsp_10.txt', ITERATIONS)
@@ -93,8 +130,7 @@ if __name__ == '__main__':
     # write_to_csv('dane/tsp_17.txt', ITERATIONS)
 
     # TESTOWANIE ZA POMOCĄ PYTHON-TSP
-    test_perform_bf('dane/tsp_6_1.txt')
+    # test_perform_bf('dane/tsp_6_1.txt')
     # test_perform_bf('dane/tsp_6_2.txt')
     # test_perform_bf('dane/tsp_10.txt')
     # test_perform_bf('dane/tsp_12.txt')
-
