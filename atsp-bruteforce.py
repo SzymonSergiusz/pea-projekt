@@ -49,6 +49,7 @@ def write_to_csv(file_name, times):
                 is_header = True
             writer.writerow([time])
 
+
 def write_to_csv_from_config(file_name, iterations, expected_dist, expected_path, output_name):
     import csv
     is_header = False
@@ -64,6 +65,8 @@ def write_to_csv_from_config(file_name, iterations, expected_dist, expected_path
                 writer.writerow(header)
                 is_header = True
             writer.writerow([time])
+
+
 def perform_bf(file_name: str):
     graph = file_to_graph(file_name)
     start = perf_counter()
@@ -103,19 +106,18 @@ def execute_from_ini(lines):
     output_name = lines.pop()
     for line in lines:
         arr_as_str = line.strip().split(' ', maxsplit=3)
-        print(arr_as_str)
         file_name, iterations, expected_dist, expected_path = arr_as_str
         expected_path = [int(p) for p in expected_path.replace('[', '').replace(']', '').strip().split(',')]
         write_to_csv_from_config(file_name, int(iterations), int(expected_dist), expected_path, output_name)
 
     with open(output_name, 'a') as f:
-        f.write(output_name)
+        f.write(f'{output_name}\n')
+
 
 if __name__ == '__main__':
     # wczytanie pliku .INI
     lines = readConfigFile('test_atsp.ini')
     execute_from_ini(lines)
-
 
     # zakomentowany kod do testowania
     # WYGENEROWANIE WYNIKÓW
