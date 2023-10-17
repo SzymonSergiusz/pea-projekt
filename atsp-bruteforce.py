@@ -68,7 +68,7 @@ def perform_bf_test_lib(file_name: str):
     path, dist = brute_force.solve_tsp_brute_force(np.array(graph))
     stop = perf_counter()
     diff = stop - start
-    return path, dist, diff
+    return path+[0], dist, diff
 
 
 def test_perform_bf(file_name: str):
@@ -88,12 +88,12 @@ if __name__ == '__main__':
     # write_to_csv('dane/tsp_10.txt', ITERATIONS)
     # write_to_csv('dane/tsp_12.txt', ITERATIONS)
     # write_to_csv('dane/tsp_13.txt', ITERATIONS)
-    write_to_csv('dane/tsp_14.txt', ITERATIONS)
+    # write_to_csv('dane/tsp_14.txt', ITERATIONS)
     # write_to_csv('dane/tsp_15.txt', ITERATIONS)
     # write_to_csv('dane/tsp_17.txt', ITERATIONS)
 
     # TESTOWANIE ZA POMOCĄ PYTHON-TSP
-    # test_perform_bf('dane/tsp_6_1.txt')
+    test_perform_bf('dane/tsp_6_1.txt')
     # test_perform_bf('dane/tsp_6_2.txt')
     # test_perform_bf('dane/tsp_10.txt')
     # test_perform_bf('dane/tsp_12.txt')
