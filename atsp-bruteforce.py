@@ -1,3 +1,4 @@
+from functools import lru_cache
 from time import perf_counter
 import numpy as np
 
@@ -53,7 +54,8 @@ def write_to_csv(file_name, times):
 def write_to_csv_from_config(file_name, iterations, expected_dist, expected_path, output_name):
     import csv
     is_header = False
-    with open(output_name, 'a') as f:
+    with open(output_name, 'a', newline=''
+              ) as f:
         writer = csv.writer(f)
         for i in range(iterations):
             path, dist, time = perform_bf(file_name)
@@ -101,7 +103,6 @@ def readConfigFile(ini: str):
             lines.append(line)
     return lines
 
-
 def execute_from_ini(lines):
     output_name = lines.pop()
     for line in lines:
@@ -116,9 +117,12 @@ def execute_from_ini(lines):
 
 if __name__ == '__main__':
     # wczytanie pliku .INI
-    lines = readConfigFile('test_atsp.ini')
-    execute_from_ini(lines)
+    # lines = readConfigFile('test_atsp.ini')
+    # execute_from_ini(lines)
 
+    # import pea_utils
+    # (path, cost, dist) = pea_utils.perform_method('dane/tsp_6_1.txt', bruteforce)
+    # print(path, cost, dist)
     # zakomentowany kod do testowania
     # WYGENEROWANIE WYNIKÓW
     # ITERATIONS = 10
@@ -134,5 +138,5 @@ if __name__ == '__main__':
     # TESTOWANIE ZA POMOCĄ PYTHON-TSP
     # test_perform_bf('dane/tsp_6_1.txt')
     # test_perform_bf('dane/tsp_6_2.txt')
-    # test_perform_bf('dane/tsp_10.txt')
+    test_perform_bf('dane/tsp_10.txt')
     # test_perform_bf('dane/tsp_12.txt')
