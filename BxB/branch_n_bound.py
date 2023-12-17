@@ -1,5 +1,5 @@
 from __future__ import annotations
-
+# from pea_utils import execute_from_ini
 from typing import List
 from queue import PriorityQueue
 
@@ -78,6 +78,5 @@ def best_first(graph) -> (list, int):
 
 
 if __name__ == '__main__':
-    from pea_utils import execute_from_ini
-
-    execute_from_ini(best_first, 'test_atsp.ini')
+    import pea_utils
+    pea_utils.execute_from_ini(best_first, 'test_atsp_bb.ini')

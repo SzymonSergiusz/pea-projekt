@@ -11,12 +11,9 @@ def held_karp(graph) -> Tuple[List, int]:
     def distance(d_i: int, S: frozenset) -> int:
         if not S:
             return graph[d_i][0]
-
         all_costs = [(d_j, graph[d_i][d_j] + distance(d_j, S.difference({d_j}))) for d_j in S]
-
-        n_min, min_cost = min(all_costs, key=lambda x: x[1])
-
-        D[(d_i, S)] = n_min
+        d_min, min_cost = min(all_costs, key=lambda x: x[1])
+        D[(d_i, S)] = d_min
         return min_cost
 
     best_dist = distance(0, S)

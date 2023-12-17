@@ -43,7 +43,7 @@ def perform_method(file_name: str, method: ()):
     graph = file_to_graph(file_name)
     start = perf_counter()
     memory_profiler.profile()
-    path, dist = method((graph))
+    path, dist = method(graph)
     mem_usage = memory_profiler.memory_usage()
     stop = perf_counter()
     diff = stop - start

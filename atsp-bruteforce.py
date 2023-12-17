@@ -117,7 +117,7 @@ def execute_from_ini(lines):
 
 if __name__ == '__main__':
     # wczytanie pliku .INI
-    # lines = readConfigFile('test_atsp.ini')
+    # lines = readConfigFile('test_atsp_bb.ini')
     # execute_from_ini(lines)
 
     # import pea_utils
