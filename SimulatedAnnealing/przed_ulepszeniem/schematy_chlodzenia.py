@@ -17,12 +17,9 @@ def geometryczny(T: float, lam, iter=None):
     # lambda <= 1
     return lam * T
 
-#source agh boltzmann
-
-
-def logarytmiczny(T: float, iter: int, lam, max_iter, t0):
+#boltzman
+def logarytmiczny(T: float, iter: int, lam):
     # lambda > 1
-    Tmin = 0.1
+    return T / (1 + lam * np.log(1 + iter))
 
-    lamda = (t0-Tmin)/(max_iter * t0*Tmin)
-    return T / (1 + lamda * T)
+geometryczny_lam = 0.9

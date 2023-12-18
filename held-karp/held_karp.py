@@ -29,4 +29,4 @@ def held_karp(graph) -> Tuple[List, int]:
 
 if __name__ == '__main__':
     import pea_utils
-    pea_utils.execute_from_ini(held_karp, 'test_atsp.ini')
+    pea_utils.execute_from_ini(held_karp, 'test_atspwzorLosGeomMnozDwa.ini')

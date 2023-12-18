@@ -10,6 +10,69 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="/SimulatedAnnealing/test_atsp_out_sa.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/SimulatedAnnealing/test_atsp_out_sa_simpleLosGeomMnozDwa.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/SimulatedAnnealing/test_atsp_out_sa_simpleLosGeompotegaDwa.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/SimulatedAnnealing/test_atsp_out_sa_simpleLosLinMnozDwa.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/SimulatedAnnealing/test_atsp_out_sa_simpleLosLinPotDwa.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/SimulatedAnnealing/test_atsp_out_sa_wzorLosGeomMnozDwa.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/SimulatedAnnealing/test_atsp_out_sa_wzorLosGeompotegaDwa.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/SimulatedAnnealing/test_atsp_out_sa_wzorLosLinMnozDwa.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/SimulatedAnnealing/test_atsp_out_sa_wzorLosLinPotDwa.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="/dist/test_atsp_out.csv">
           <value>
             <Attribute>

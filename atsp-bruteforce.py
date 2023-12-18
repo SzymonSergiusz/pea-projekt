@@ -138,5 +138,16 @@ if __name__ == '__main__':
     # TESTOWANIE ZA POMOCĄ PYTHON-TSP
     # test_perform_bf('dane/tsp_6_1.txt')
     # test_perform_bf('dane/tsp_6_2.txt')
-    test_perform_bf('dane/tsp_10.txt')
+    #test_perform_bf('dane/tsp_10.txt')
     # test_perform_bf('dane/tsp_12.txt')
+
+    graph = np.array([
+        [0, 20, 30, 31, 28, 40],
+        [30, 0, 10, 14, 20, 44],
+        [40, 20, 0, 10, 22, 50],
+        [41, 24, 20, 0, 14, 42],
+        [38, 30, 32, 24, 0, 28],
+        [50, 54, 60, 52, 38, 0]
+    ])
+
+    print(bruteforce(graph))

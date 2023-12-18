@@ -1,3 +1,5 @@
+from typing import Dict
+
 import numpy as np
 
 
@@ -59,7 +61,7 @@ def file_to_graph(file_name: str):
             data.append(list(map(int, line.strip().split())))
 
     # pozbycie się 'dziwnych' oznaczeń diagonali
-    np.fill_diagonal(np.asarray(data), 0)
+   # np.fill_diagonal(np.asarray(data), 0)
     return data
 
 
@@ -108,6 +110,8 @@ def execute_from_ini(method, ini: str):
     lines = __readConfigFile(ini)
     output_name = lines.pop()
     for line in lines:
+        if line[0] == '#':
+            continue
         arr_as_str = line.strip().split(' ', maxsplit=3)
         file_name, iterations, expected_dist, expected_path = arr_as_str
         expected_path = [int(p) for p in expected_path.replace('[', '').replace(']', '').strip().split(',')]
@@ -115,6 +119,20 @@ def execute_from_ini(method, ini: str):
 
     with open(output_name, 'a') as f:
         f.write(f'{output_name}\n')
+
+
+def execute_from_ini(method, ini: str):
+    lines = __readConfigFile(ini)
+    output_name = lines.pop()
+    for line in lines:
+        arr_as_str = line.strip().split(' ', maxsplit=3)
+        file_name, iterations, expected_dist, expected_path = arr_as_str
+        expected_path = [int(p) for p in expected_path.replace('[', '').replace(']', '').strip().split(',')]
+        write_to_csv_from_config(method, file_name, int(iterations), int(expected_dist), expected_path, output_name)
+
+    with open(output_name, 'a') as f:
+        f.write(f'{output_name}\n')
+
 
 # def execute_from_ini(method, ini: str):
 #
@@ -139,3 +157,84 @@ def execute_from_ini(method, ini: str):
 #
 #     with open(output_name, 'a') as f:
 #         f.write(f'{output_name}\n')
+def execute_from_ini_sa(method, ini: str):
+
+
+    lines = __readConfigFile(ini)
+    output_name = lines.pop()
+    print(output_name)
+    for line in lines:
+        if line[0] == '#':
+            print('pomijam')
+            continue
+        arr_as_str = line.strip().split(' ')
+        #print(arr_as_str)
+        file_name, iterations, expected_dist, wybor_t0, wybor_x0, chlodzenie, dlugosc_epoki, sposob_sasiada = arr_as_str
+
+        parametry = [wybor_t0, chlodzenie, dlugosc_epoki, sposob_sasiada]
+
+        write_to_csv_from_config_sa(method, file_name, int(iterations), int(expected_dist), output_name, parametry)
+
+    with open(output_name, 'a') as f:
+        f.write(f'{output_name}\n')
+
+
+def write_to_csv_from_config_sa(method: (), file_name, iterations, expected_dist , output_name,
+                                parametry):
+    import csv
+    is_header = False
+    with open(output_name, 'a', newline=''
+              ) as f:
+        writer = csv.writer(f)
+        for i in range(iterations):
+
+            path, dist, time, memory_usage,  ile_epok, temp_poczatkowa, temp_koncowa = perform_method_sa(file_name, method, parametry)
+
+            if not is_header:
+                header = [file_name, iterations, expected_dist, parametry]
+                writer.writerow(header)
+                is_header = True
+            writer.writerow([path, dist, time, memory_usage,  ile_epok, temp_poczatkowa, temp_koncowa])
+
+
+def perform_method_sa(file_name: str, method: (), parametry):
+    from time import perf_counter
+    graph = file_to_graph(file_name)
+    import SimulatedAnnealing.SA as SA
+
+    chlodzenie: Dict[
+        str, ()
+    ] = {
+        "geometryczny": SA.geometryczny,
+        "liniowy": SA.liniowy,
+    }
+    wybor_t0: Dict[
+        str, ()
+    ] = {
+        "temp_wzor": SA.temp_init,
+        "simple_temp": SA.simple_temp_init,
+    }
+    epoki: Dict[
+        str, ()
+    ] = {
+        "mnoznik": SA.mnoznik,
+        "potega": SA.potega,
+    }
+    sposob: Dict[
+        str, ()
+    ] = {
+        "dwa_zmiany": SA.dwa_zamiana,
+        "cos innego": None,
+    }
+
+    start = perf_counter()
+    memory_profiler.profile()
+    # !_ parametry = [wybor_t0, chlodzenie, dlugosc_epoki, sposob_sasiada]
+    path, dist, temp_koncowa, temp_poczatkowa, ile_epok = method(graph, chlodzenie[parametry[1]],
+                        wybor_t0[parametry[0]], sposob[parametry[3]], epoki[parametry[2]])
+    mem_usage = memory_profiler.memory_usage()
+    stop = perf_counter()
+    diff = stop - start
+    return path, dist, diff, mem_usage, ile_epok, temp_poczatkowa, temp_koncowa
+
+
