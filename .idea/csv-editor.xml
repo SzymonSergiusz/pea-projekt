@@ -10,63 +10,161 @@
             </Attribute>
           </value>
         </entry>
-        <entry key="/SimulatedAnnealing/test_atsp_out_sa.csv">
+        <entry key="/SimulatedAnnealing/kopie_danych/test_simple_los_geo_mnoz_luk.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />
             </Attribute>
           </value>
         </entry>
-        <entry key="/SimulatedAnnealing/test_atsp_out_sa_simpleLosGeomMnozDwa.csv">
+        <entry key="/SimulatedAnnealing/kopie_danych/test_simple_los_log_mnoz_luk.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />
             </Attribute>
           </value>
         </entry>
-        <entry key="/SimulatedAnnealing/test_atsp_out_sa_simpleLosGeompotegaDwa.csv">
+        <entry key="/SimulatedAnnealing/kopie_danych/test_wzor_los_geo_mnoz_dwazamiany.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />
             </Attribute>
           </value>
         </entry>
-        <entry key="/SimulatedAnnealing/test_atsp_out_sa_simpleLosLinMnozDwa.csv">
+        <entry key="/SimulatedAnnealing/kopie_danych/test_wzor_los_geo_mnoz_luk.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />
             </Attribute>
           </value>
         </entry>
-        <entry key="/SimulatedAnnealing/test_atsp_out_sa_simpleLosLinPotDwa.csv">
+        <entry key="/SimulatedAnnealing/kopie_danych/test_wzor_los_geo_pot_luk.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />
             </Attribute>
           </value>
         </entry>
-        <entry key="/SimulatedAnnealing/test_atsp_out_sa_wzorLosGeomMnozDwa.csv">
+        <entry key="/SimulatedAnnealing/kopie_danych/test_wzor_los_log_mnoz_luk.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />
             </Attribute>
           </value>
         </entry>
-        <entry key="/SimulatedAnnealing/test_atsp_out_sa_wzorLosGeompotegaDwa.csv">
+        <entry key="/SimulatedAnnealing/najlepszychyba.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />
             </Attribute>
           </value>
         </entry>
-        <entry key="/SimulatedAnnealing/test_atsp_out_sa_wzorLosLinMnozDwa.csv">
+        <entry key="/SimulatedAnnealing/przemielone/out_test_rbg_uzupelnienie.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />
             </Attribute>
           </value>
         </entry>
-        <entry key="/SimulatedAnnealing/test_atsp_out_sa_wzorLosLinPotDwa.csv">
+        <entry key="/SimulatedAnnealing/przemielone/out_test_simple_los_geo_mnoz_luk.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/SimulatedAnnealing/przemielone/out_test_simple_los_log_mnoz_luk.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/SimulatedAnnealing/przemielone/out_test_wzor_los_geo_mnoz_dwazamiany.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/SimulatedAnnealing/przemielone/out_test_wzor_los_geo_mnoz_luk.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/SimulatedAnnealing/przemielone/out_test_wzor_los_geo_pot_luk.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/SimulatedAnnealing/przemielone/out_test_wzor_los_log_mnoz_luk.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/SimulatedAnnealing/test.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/SimulatedAnnealing/test_rbg_uzupelnienie.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/SimulatedAnnealing/test_simple_los_geo_mnoz_luk.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/SimulatedAnnealing/test_simple_los_log_mnoz_luk.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/SimulatedAnnealing/test_wzor_los_geo_mnoz_dwa_zamiany.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/SimulatedAnnealing/test_wzor_los_geo_mnoz_dwazamiany.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/SimulatedAnnealing/test_wzor_los_geo_mnoz_luk.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/SimulatedAnnealing/test_wzor_los_geo_pot_luk.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/SimulatedAnnealing/test_wzor_los_log_mnoz_luk.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />

@@ -13,7 +13,7 @@ def write_to_csv_from_config(method: (), file_name, iterations, expected_dist, e
         for i in range(iterations):
 
             path, dist, time, memory_usage = perform_method(file_name, method)
-            # test czy wygenerowane wyniki zgadzają się z oczekiwanymi wynikami z pliku .ini
+            # test czy wygenerowane dodatkowe zgadzają się z oczekiwanymi wynikami z pliku .ini
             if do_test:
                 assert path == expected_path
                 assert dist == expected_dist
@@ -61,7 +61,7 @@ def file_to_graph(file_name: str):
             data.append(list(map(int, line.strip().split())))
 
     # pozbycie się 'dziwnych' oznaczeń diagonali
-   # np.fill_diagonal(np.asarray(data), 0)
+    # np.fill_diagonal(np.asarray(data), 0)
     return data
 
 
@@ -158,8 +158,6 @@ def execute_from_ini(method, ini: str):
 #     with open(output_name, 'a') as f:
 #         f.write(f'{output_name}\n')
 def execute_from_ini_sa(method, ini: str):
-
-
     lines = __readConfigFile(ini)
     output_name = lines.pop()
     print(output_name)
@@ -168,7 +166,7 @@ def execute_from_ini_sa(method, ini: str):
             print('pomijam')
             continue
         arr_as_str = line.strip().split(' ')
-        #print(arr_as_str)
+        # print(arr_as_str)
         file_name, iterations, expected_dist, wybor_t0, wybor_x0, chlodzenie, dlugosc_epoki, sposob_sasiada = arr_as_str
 
         parametry = [wybor_t0, chlodzenie, dlugosc_epoki, sposob_sasiada]
@@ -179,7 +177,7 @@ def execute_from_ini_sa(method, ini: str):
         f.write(f'{output_name}\n')
 
 
-def write_to_csv_from_config_sa(method: (), file_name, iterations, expected_dist , output_name,
+def write_to_csv_from_config_sa(method: (), file_name, iterations, expected_dist, output_name,
                                 parametry):
     import csv
     is_header = False
@@ -188,25 +186,27 @@ def write_to_csv_from_config_sa(method: (), file_name, iterations, expected_dist
         writer = csv.writer(f)
         for i in range(iterations):
 
-            path, dist, time, memory_usage,  ile_epok, temp_poczatkowa, temp_koncowa = perform_method_sa(file_name, method, parametry)
+            path, dist, time, memory_usage, ile_epok, temp_poczatkowa, temp_koncowa = perform_method_sa(file_name,
+                                                                                                        method,
+                                                                                                        parametry)
 
             if not is_header:
                 header = [file_name, iterations, expected_dist, parametry]
                 writer.writerow(header)
                 is_header = True
-            writer.writerow([path, dist, time, memory_usage,  ile_epok, temp_poczatkowa, temp_koncowa])
+            writer.writerow([path, dist, time, memory_usage, ile_epok, temp_poczatkowa, temp_koncowa])
 
+
+
+    # !_ parametry = [wybor_t0, chlodzenie, dlugosc_epoki, sposob_sasiada]
 
 def perform_method_sa(file_name: str, method: (), parametry):
-    from time import perf_counter
-    graph = file_to_graph(file_name)
     import SimulatedAnnealing.SA as SA
-
     chlodzenie: Dict[
         str, ()
     ] = {
         "geometryczny": SA.geometryczny,
-        "liniowy": SA.liniowy,
+        "logarytmiczny": SA.logarytmiczny,
     }
     wybor_t0: Dict[
         str, ()
@@ -217,24 +217,28 @@ def perform_method_sa(file_name: str, method: (), parametry):
     epoki: Dict[
         str, ()
     ] = {
-        "mnoznik": SA.mnoznik,
-        "potega": SA.potega,
+        "mnoznik": SA.epoka_mnoznik,
+        "potega": SA.epoka_potega,
     }
     sposob: Dict[
         str, ()
     ] = {
-        "dwa_zmiany": SA.dwa_zamiana,
-        "cos innego": None,
+        "dwa_zamiany": SA.dwa_zamiana,
+        "luk": SA.wymiana_lukow,
     }
+
+    from time import perf_counter
+    graph = file_to_graph(file_name)
 
     start = perf_counter()
     memory_profiler.profile()
-    # !_ parametry = [wybor_t0, chlodzenie, dlugosc_epoki, sposob_sasiada]
     path, dist, temp_koncowa, temp_poczatkowa, ile_epok = method(graph, chlodzenie[parametry[1]],
-                        wybor_t0[parametry[0]], sposob[parametry[3]], epoki[parametry[2]])
+                                                                 wybor_t0[parametry[0]], sposob[parametry[3]],
+                                                                 epoki[parametry[2]])
     mem_usage = memory_profiler.memory_usage()
     stop = perf_counter()
     diff = stop - start
     return path, dist, diff, mem_usage, ile_epok, temp_poczatkowa, temp_koncowa
+
 
 

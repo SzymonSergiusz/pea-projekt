@@ -17,4 +17,4 @@ print(f'dist: {dist}')
 
 
 # todo
-# TEST w formie funkcja argument to nazwa pliku i wykonuje obiema funkcjami i assertuje wyniki i tak dla wszysktich plików
+# TEST w formie funkcja argument to nazwa pliku i wykonuje obiema funkcjami i assertuje dodatkowe i tak dla wszysktich plików

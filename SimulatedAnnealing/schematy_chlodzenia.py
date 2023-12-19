@@ -6,7 +6,12 @@ def liniowy(T: float, lam, iter: int):
         lam = 1.5
 
     return T / (1 + lam * iter)
+def liniowy(T, lam, iter: int):
+    # lambda > 1
 
+    lam = 1.1
+    # todo
+    return T / (1 + lam * iter)
 def wykladniczy(T: float, lam, iter: int):
     # T_k+1 = lambda^k * T_k, gdzie lambda <= 1
 

@@ -59,7 +59,7 @@ def write_to_csv_from_config(file_name, iterations, expected_dist, expected_path
         writer = csv.writer(f)
         for i in range(iterations):
             path, dist, time = perform_bf(file_name)
-            # test czy wygenerowane wyniki zgadzają się z oczekiwanymi wynikami z pliku .ini
+            # test czy wygenerowane dodatkowe zgadzają się z oczekiwanymi wynikami z pliku .ini
             assert path == expected_path
             assert dist == expected_dist
             if not is_header:
