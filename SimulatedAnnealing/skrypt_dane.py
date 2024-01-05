@@ -72,4 +72,4 @@ if __name__ == '__main__':
     #
     # for file in files:
     #     excel_supreme(file)
-    excel_supreme('test_rbg_uzupelnienie.csv')
+    excel_supreme('test_wzor_los_log_mnoz_dwa_zamiany.csv')

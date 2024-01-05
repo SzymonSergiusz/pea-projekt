@@ -101,14 +101,14 @@
             </Attribute>
           </value>
         </entry>
-        <entry key="/SimulatedAnnealing/przemielone/out_test_wzor_los_log_mnoz_luk.csv">
+        <entry key="/SimulatedAnnealing/przemielone/out_test_wzor_los_log_mnoz_dwa_zamiany.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />
             </Attribute>
           </value>
         </entry>
-        <entry key="/SimulatedAnnealing/test.csv">
+        <entry key="/SimulatedAnnealing/przemielone/out_test_wzor_los_log_mnoz_luk.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />
@@ -158,6 +158,13 @@
           </value>
         </entry>
         <entry key="/SimulatedAnnealing/test_wzor_los_geo_pot_luk.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/SimulatedAnnealing/test_wzor_los_log_mnoz_dwa_zamiany.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />
