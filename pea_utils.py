@@ -52,6 +52,9 @@ def perform_method(file_name: str, method: ()):
     return path, dist, diff, mem_usage
 
 
+import numpy as np
+
+
 def file_to_graph(file_name: str):
     data = []
     with open(file_name) as f:
@@ -59,10 +62,23 @@ def file_to_graph(file_name: str):
         for i in range(size):
             line = f.readline()
             data.append(list(map(int, line.strip().split())))
+    graph = np.asarray(data)
+    np.fill_diagonal(graph, 0)
+    # print(graph)
+    return graph
 
-    # pozbycie się 'dziwnych' oznaczeń diagonali
-    # np.fill_diagonal(np.asarray(data), 0)
-    return data
+def file_to_graph_aco(file_name: str):
+    data = []
+    file_name = '/Users/sergiusz/PycharmProjects/pea-projekt/AntColony/' + file_name
+    with open(file_name) as f:
+        size: int = int(f.readline().strip())
+        for i in range(size):
+            line = f.readline()
+            data.append(list(map(int, line.strip().split())))
+    graph = np.asarray(data)
+    np.fill_diagonal(graph, 0)
+    # print(graph)
+    return graph
 
 
 def write_to_csv(file_name, times, method: (), output_name='test_atsp_out'):
@@ -134,29 +150,6 @@ def execute_from_ini(method, ini: str):
         f.write(f'{output_name}\n')
 
 
-# def execute_from_ini(method, ini: str):
-#
-#
-#     lines = __readConfigFile(ini)
-#     output_name = lines.pop()
-#     for line in lines:
-#         arr_as_str = line.strip().split(' ', maxsplit=3)
-#         file_name, iterations, expected_dist, expected_path = arr_as_str
-#
-#         splitted = file_name.split('.')
-#         if splitted[1] == 'astp':
-#             print('tsplib')
-#             import tsplib95
-#             problem = tsplib95.load_problem()
-#             graph = problem.get_graph()
-#
-#         else:
-#
-#             expected_path = [int(p) for p in expected_path.replace('[', '').replace(']', '').strip().split(',')]
-#             write_to_csv_from_config(method, file_name, int(iterations), int(expected_dist), expected_path, output_name)
-#
-#     with open(output_name, 'a') as f:
-#         f.write(f'{output_name}\n')
 def execute_from_ini_sa(method, ini: str):
     lines = __readConfigFile(ini)
     output_name = lines.pop()
@@ -196,9 +189,8 @@ def write_to_csv_from_config_sa(method: (), file_name, iterations, expected_dist
                 is_header = True
             writer.writerow([path, dist, time, memory_usage, ile_epok, temp_poczatkowa, temp_koncowa])
 
-
-
     # !_ parametry = [wybor_t0, chlodzenie, dlugosc_epoki, sposob_sasiada]
+
 
 def perform_method_sa(file_name: str, method: (), parametry):
     import SimulatedAnnealing.SA as SA
@@ -241,4 +233,62 @@ def perform_method_sa(file_name: str, method: (), parametry):
     return path, dist, diff, mem_usage, ile_epok, temp_poczatkowa, temp_koncowa
 
 
+def execute_from_ini_aco(method, ini: str):
+    lines = __readConfigFile(ini)
+    output_name = lines.pop()
+    print(output_name)
+    for line in lines:
+        if line[0] == '#':
+            print('pomijam')
+            continue
+        arr_as_str = line.strip().split(' ')
+        # print(arr_as_str)
+        file_name, iterations, expected_dist, alfa, beta, schemat = arr_as_str
 
+        parametry = [float(alfa), float(beta), str(schemat)]
+
+        write_to_csv_from_config_aco(method, file_name, int(iterations), int(expected_dist), output_name, parametry)
+
+    with open(output_name, 'a') as f:
+        f.write(f'{output_name}\n')
+
+
+def write_to_csv_from_config_aco(method: (), file_name, iterations, expected_dist, output_name,
+                                 parametry):
+    import csv
+    is_header = False
+    with open(output_name, 'a', newline=''
+              ) as f:
+        writer = csv.writer(f)
+        for i in range(iterations):
+
+            path, dist, time, memory_usage = perform_method_aco(file_name,
+                                                                method,
+                                                                parametry)
+
+            if not is_header:
+                header = [file_name, iterations, expected_dist, parametry]
+                writer.writerow(header)
+                is_header = True
+            writer.writerow([path, dist, time, memory_usage])
+
+    # !_ parametry = [alfa, beta, schemat]
+
+
+def perform_method_aco(file_name: str, method: (), parametry):
+    from time import perf_counter
+    from AntColony.ACO import solve_tsp_nearest
+    graph = file_to_graph_aco(file_name)
+
+    start = perf_counter()
+
+    est_path, est_cost = solve_tsp_nearest(graph)
+    tau0 = len(graph) / est_cost
+    memory_profiler.profile()
+    # parametry = [float(alfa), float(beta), str(schemat)]
+    path, dist = method(graph, 40, parametry[0], parametry[1], 0.5, tau0, est_cost, parametry[2])
+
+    mem_usage = memory_profiler.memory_usage()
+    stop = perf_counter()
+    diff = stop - start
+    return path, dist, diff, mem_usage
