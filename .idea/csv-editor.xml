@@ -3,6 +3,48 @@
   <component name="CsvFileAttributes">
     <option name="attributeMap">
       <map>
+        <entry key="/AntColony/konfigi/test_alfa_cas.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/AntColony/konfigi/test_alfa_das.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/AntColony/konfigi/test_beta_cas.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/AntColony/konfigi/test_beta_das.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/AntColony/konfigi/test_dorigo_cas.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/AntColony/konfigi/test_dorigo_das.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="/BxB/test_atsp_out_bb.csv">
           <value>
             <Attribute>
@@ -178,6 +220,13 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="/SimulatedAnnealing/test_wzor_xxxxxx.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="/dist/test_atsp_out.csv">
           <value>
             <Attribute>
@@ -199,7 +248,7 @@
             </Attribute>
           </value>
         </entry>
-        <entry key="/test_atsp_out.csv">
+        <entry key="/pozostalosci/test_atsp_out.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />

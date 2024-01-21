@@ -237,9 +237,14 @@ def ACO_CAS(graph, pokolenia, alfa, beta, ro, tau0, Q):
         # S - set of potentially selected cities
 
         for ant in range(ants):
-            constructed_path = []
+
+            constructed_path = [0]
             np.random.shuffle(S)
-            current_city = S[0]
+
+            current_city = 0
+            S = S[S != 0]
+            # constructed_path.append(current_city)
+
             while len(S) > 0:
                 # wybierz miasto j na podstawie Pij
                 next_city = Pij(alfa, beta, feromony, visibility, current_city, S)
@@ -275,8 +280,8 @@ def ACO_CAS(graph, pokolenia, alfa, beta, ro, tau0, Q):
 if __name__ == '__main__':
     # wg Dorigo
     alfa = 1
-    beta = 4
-    ro = 0.2
+    beta = 3
+    ro = 0.5
 
     file_dict = {
         'gr17.txt': 2085,
