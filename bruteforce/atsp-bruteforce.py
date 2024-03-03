@@ -40,7 +40,7 @@ def file_to_graph(file_name: str):
 def write_to_csv(file_name, times):
     import csv
     is_header = False
-    with open('test_atsp_out.csv', 'a') as f:
+    with open('../pozostalosci/test_atsp_out.csv', 'a') as f:
         writer = csv.writer(f)
         for i in range(times):
             path, dist, time = perform_bf(file_name)

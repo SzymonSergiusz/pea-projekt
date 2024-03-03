@@ -6,8 +6,6 @@ from queue import PriorityQueue
 import python_tsp.exact
 
 import pea_utils
-
-
 class Node:
     parent: 'Node'
     city_index: int
@@ -42,7 +40,6 @@ def lower_bound(graph: List[List[int]], path: List[int]) -> int:
     if unvisited:
         bound += min([graph[last_city][city] for city in unvisited])
     return bound
-
 
 def best_first(graph) -> (list, int):
     best_path = []

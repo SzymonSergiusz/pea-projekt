@@ -1,45 +1,53 @@
 import pandas as pd
 
-abs_path = '/Users/sergiusz/PycharmProjects/pea-projekt/AntColony/'
-out_path = '/Users/sergiusz/PycharmProjects/pea-projekt/AntColony/przemielone/'
+abs_path = '/Users/sergiusz/PycharmProjects/pea-projekt/AntColony/wyniki/'
+out_path = '/AntColony/usrednione_wyniki/'
 
 
 def oblicz_jakosc(wynik: int, optimum: int) -> float:
     return ((wynik - optimum) / optimum) * 100
 
 
-chunk_size = 20
-total_lines = 15 * chunk_size
-index = 0
+def count_lines(file_path):
+    with open(file_path, 'r') as file:
+        line_count = sum(1 for line in file)
+    return line_count
 
-
-# columns = ['nazwa pliku', 'średni czas', 'średnie zużycie pamięci', 'średni wynik', 'optimum',
-#            'średnia jakość rozwiązania']
 
 def excel_supreme(file_path):
     absolute = abs_path + file_path
-    for i in range(0, total_lines, chunk_size + 1):
+    chunk_size = None
+    total_lines = count_lines(absolute)
+    print(total_lines)
+
+    i = 0
+    while i < total_lines:
+        if i + 1 == total_lines: break
 
         with open(absolute, 'r') as file:
             for _ in range(i):
                 next(file)
             first_line = file.readline().rstrip()
+            chunk_size = int(first_line.split(',')[1])
 
         data = pd.read_csv(absolute, skiprows=i + 1, nrows=chunk_size, header=None)
-
-        data.columns = first_line.split(',')
+        data.columns = first_line.split(',', maxsplit=3)
         nazwa_pliku, optimum = data.columns[0], data.columns[2]
-
+        print(f'optimum : ', optimum)
         srednia_wynik = data.iloc[:, 1].mean()
         srednia_czas = data.iloc[:, 2].mean()
+
         srednia_pamiec = data.iloc[:, 3].mean()
+
         srednia_jakosc = oblicz_jakosc(srednia_wynik, int(optimum))
-        # print("Średnia wynik:", srednia_wynik)
+
+        # print(nazwa_pliku, i)
         # print("Średni czas:", srednia_czas)
         # print("Średnia pamięć:", srednia_pamiec)
         # print("Średnia jakość:", srednia_jakosc)
-        #
         # print('--------------------------------------------')
+        i += chunk_size+1
+
 
         data_to_save = pd.DataFrame({
             'nazwa pliku': [nazwa_pliku],
@@ -58,29 +66,15 @@ def excel_supreme(file_path):
             print("Wystąpił błąd podczas zapisu do pliku CSV:", e)
 
 
+
 if __name__ == '__main__':
     file_dict = {
-        'gr17.txt': 2085,
-        'gr21.txt': 2707,
-        'ftv33.txt': 1286,
-        'ft53.txt': 6905,
-        'ftv70.txt': 1950,
-        'gr96.txt': 55209,
-        'ftv170.txt': 2755,
-        'gr202.txt': 40160,
-        'rbg323.txt': 1326,
-        'pcb442.txt': 50778,
-        'rbg443.txt': 2720,
+        'test_alfa_cas.csv',
+        'test_alfa_das.csv',
+        'test_beta_cas.csv',
+        'test_beta_das.csv',
+        'test_dorigo_cas.csv',
+        'test_dorigo_das.csv',
     }
-    # files = [
-    #     'test_simple_los_geo_mnoz_luk.csv',
-    #     'test_simple_los_log_mnoz_luk.csv',
-    #     'test_wzor_los_geo_mnoz_dwazamiany.csv',
-    #     'test_wzor_los_geo_mnoz_luk.csv',
-    #     'test_wzor_los_geo_pot_luk.csv',
-    #     'test_wzor_los_log_mnoz_luk.csv',
-    # ]
-    #
-    # for file in files:
-    #     excel_supreme(file)
-    # excel_supreme('test_wzor_los_log_mnoz_dwa_zamiany.csv')
+    for file in file_dict:
+        excel_supreme(file)

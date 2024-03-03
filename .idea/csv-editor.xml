@@ -3,42 +3,112 @@
   <component name="CsvFileAttributes">
     <option name="attributeMap">
       <map>
-        <entry key="/AntColony/konfigi/test_alfa_cas.csv">
+        <entry key="/AntColony/przemielone/out_test_alfa_cas.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />
             </Attribute>
           </value>
         </entry>
-        <entry key="/AntColony/konfigi/test_alfa_das.csv">
+        <entry key="/AntColony/przemielone/out_test_alfa_das.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />
             </Attribute>
           </value>
         </entry>
-        <entry key="/AntColony/konfigi/test_beta_cas.csv">
+        <entry key="/AntColony/przemielone/out_test_beta_das.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />
             </Attribute>
           </value>
         </entry>
-        <entry key="/AntColony/konfigi/test_beta_das.csv">
+        <entry key="/AntColony/przemielone/out_test_dorigo_cas.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />
             </Attribute>
           </value>
         </entry>
-        <entry key="/AntColony/konfigi/test_dorigo_cas.csv">
+        <entry key="/AntColony/przemielone/out_test_dorigo_das.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />
             </Attribute>
           </value>
         </entry>
-        <entry key="/AntColony/konfigi/test_dorigo_das.csv">
+        <entry key="/AntColony/usrednione_wyniki/out_test_alfa_das.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/AntColony/usrednione_wyniki/out_test_beta_cas.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/AntColony/usrednione_wyniki/out_test_beta_das.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/AntColony/usrednione_wyniki/out_test_dorigo_cas.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/AntColony/usrednione_wyniki/out_test_dorigo_das.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/AntColony/wyniki/test_alfa_cas.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/AntColony/wyniki/test_alfa_das.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/AntColony/wyniki/test_beta_cas.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/AntColony/wyniki/test_beta_das.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/AntColony/wyniki/test_dorigo_cas.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/AntColony/wyniki/test_dorigo_das.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />
@@ -221,6 +291,62 @@
           </value>
         </entry>
         <entry key="/SimulatedAnnealing/test_wzor_xxxxxx.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/SimulatedAnnealing/usrednione_wyniki/out_test_rbg_uzupelnienie.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/SimulatedAnnealing/usrednione_wyniki/out_test_simple_los_geo_mnoz_luk.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/SimulatedAnnealing/usrednione_wyniki/out_test_simple_los_log_mnoz_luk.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/SimulatedAnnealing/usrednione_wyniki/out_test_wzor_los_geo_mnoz_dwazamiany.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/SimulatedAnnealing/usrednione_wyniki/out_test_wzor_los_geo_mnoz_luk.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/SimulatedAnnealing/usrednione_wyniki/out_test_wzor_los_geo_pot_luk.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/SimulatedAnnealing/usrednione_wyniki/out_test_wzor_los_log_mnoz_dwa_zamiany.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/SimulatedAnnealing/usrednione_wyniki/out_test_wzor_los_log_mnoz_luk.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />

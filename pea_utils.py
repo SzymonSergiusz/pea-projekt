@@ -277,17 +277,14 @@ def write_to_csv_from_config_aco(method: (), file_name, iterations, expected_dis
 
 def perform_method_aco(file_name: str, method: (), parametry):
     from time import perf_counter
-    from AntColony.ACO import solve_tsp_nearest
+    from AntColony.ACO import nearest_neighbour
     graph = file_to_graph_aco(file_name)
-
     start = perf_counter()
-
-    est_path, est_cost = solve_tsp_nearest(graph)
+    est_path, est_cost = nearest_neighbour(graph)
     tau0 = len(graph) / est_cost
     memory_profiler.profile()
     # parametry = [float(alfa), float(beta), str(schemat)]
     path, dist = method(graph, 40, parametry[0], parametry[1], 0.5, tau0, est_cost, parametry[2])
-
     mem_usage = memory_profiler.memory_usage()
     stop = perf_counter()
     diff = stop - start
