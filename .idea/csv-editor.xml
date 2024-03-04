@@ -3,41 +3,6 @@
   <component name="CsvFileAttributes">
     <option name="attributeMap">
       <map>
-        <entry key="/AntColony/przemielone/out_test_alfa_cas.csv">
-          <value>
-            <Attribute>
-              <option name="separator" value="," />
-            </Attribute>
-          </value>
-        </entry>
-        <entry key="/AntColony/przemielone/out_test_alfa_das.csv">
-          <value>
-            <Attribute>
-              <option name="separator" value="," />
-            </Attribute>
-          </value>
-        </entry>
-        <entry key="/AntColony/przemielone/out_test_beta_das.csv">
-          <value>
-            <Attribute>
-              <option name="separator" value="," />
-            </Attribute>
-          </value>
-        </entry>
-        <entry key="/AntColony/przemielone/out_test_dorigo_cas.csv">
-          <value>
-            <Attribute>
-              <option name="separator" value="," />
-            </Attribute>
-          </value>
-        </entry>
-        <entry key="/AntColony/przemielone/out_test_dorigo_das.csv">
-          <value>
-            <Attribute>
-              <option name="separator" value="," />
-            </Attribute>
-          </value>
-        </entry>
         <entry key="/AntColony/usrednione_wyniki/out_test_alfa_das.csv">
           <value>
             <Attribute>
@@ -158,69 +123,6 @@
           </value>
         </entry>
         <entry key="/SimulatedAnnealing/kopie_danych/test_wzor_los_log_mnoz_luk.csv">
-          <value>
-            <Attribute>
-              <option name="separator" value="," />
-            </Attribute>
-          </value>
-        </entry>
-        <entry key="/SimulatedAnnealing/najlepszychyba.csv">
-          <value>
-            <Attribute>
-              <option name="separator" value="," />
-            </Attribute>
-          </value>
-        </entry>
-        <entry key="/SimulatedAnnealing/przemielone/out_test_rbg_uzupelnienie.csv">
-          <value>
-            <Attribute>
-              <option name="separator" value="," />
-            </Attribute>
-          </value>
-        </entry>
-        <entry key="/SimulatedAnnealing/przemielone/out_test_simple_los_geo_mnoz_luk.csv">
-          <value>
-            <Attribute>
-              <option name="separator" value="," />
-            </Attribute>
-          </value>
-        </entry>
-        <entry key="/SimulatedAnnealing/przemielone/out_test_simple_los_log_mnoz_luk.csv">
-          <value>
-            <Attribute>
-              <option name="separator" value="," />
-            </Attribute>
-          </value>
-        </entry>
-        <entry key="/SimulatedAnnealing/przemielone/out_test_wzor_los_geo_mnoz_dwazamiany.csv">
-          <value>
-            <Attribute>
-              <option name="separator" value="," />
-            </Attribute>
-          </value>
-        </entry>
-        <entry key="/SimulatedAnnealing/przemielone/out_test_wzor_los_geo_mnoz_luk.csv">
-          <value>
-            <Attribute>
-              <option name="separator" value="," />
-            </Attribute>
-          </value>
-        </entry>
-        <entry key="/SimulatedAnnealing/przemielone/out_test_wzor_los_geo_pot_luk.csv">
-          <value>
-            <Attribute>
-              <option name="separator" value="," />
-            </Attribute>
-          </value>
-        </entry>
-        <entry key="/SimulatedAnnealing/przemielone/out_test_wzor_los_log_mnoz_dwa_zamiany.csv">
-          <value>
-            <Attribute>
-              <option name="separator" value="," />
-            </Attribute>
-          </value>
-        </entry>
-        <entry key="/SimulatedAnnealing/przemielone/out_test_wzor_los_log_mnoz_luk.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />
@@ -368,20 +270,6 @@
           </value>
         </entry>
         <entry key="/held-karp/test_atsp_out_final_1.csv">
-          <value>
-            <Attribute>
-              <option name="separator" value="," />
-            </Attribute>
-          </value>
-        </entry>
-        <entry key="/pozostalosci/test_atsp_out.csv">
-          <value>
-            <Attribute>
-              <option name="separator" value="," />
-            </Attribute>
-          </value>
-        </entry>
-        <entry key="/wyniki/test_atsp_out-kopia.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />
